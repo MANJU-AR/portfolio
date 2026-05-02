@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Manju A R | AI Engineer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0f1a;
+      font-family: 'Inter', sans-serif;
+      color: #eef2ff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #11161f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c084fc;
+      border-radius: 6px;
+    }
+
+    .glass-card {
+      background: rgba(18, 24, 36, 0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(192, 132, 252, 0.6);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 12, 20, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.4);
+      padding: 0.9rem 2rem;
+    }
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #f0f0ff, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ccd6f6;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #c084fc;
+    }
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      z-index: 2000;
+    }
+    .progress-bar {
+      height: 3px;
+      background: linear-gradient(90deg, #c084fc, #8b5cf6);
+      width: 0%;
+      transition: width 0.1s;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1a1f2e;
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+      border: 1px solid #c084fc;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top i {
+      color: #c084fc;
+      font-size: 1.4rem;
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(120deg, #e9eaff, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .typing {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin: 1rem 0;
+      color: #c4b5fd;
+    }
+    .hero-desc {
+      max-width: 700px;
+      margin: 1.5rem auto;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .progress-bg {
+      background: #1e2538;
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #c084fc, #a78bfa);
+      border-radius: 20px;
+      transition: width 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+      border-left: 2px solid #c084fc;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      background: #c084fc;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #c084fc;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: rgba(18, 24, 36, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: 1px solid rgba(192, 132, 252, 0.3);
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: #c084fc;
+      box-shadow: 0 20px 30px -15px #00000070;
+    }
+    .project-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #c084fc;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      max-width: 500px;
+      background: #10131f;
+      border-radius: 2rem;
+      padding: 2rem;
+      border: 1px solid #c084fc;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #141a2a;
+      border: 1px solid #2a2f42;
+      border-radius: 1rem;
+      color: white;
+      transition: 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #c084fc;
+      outline: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #c084fc, #8b5cf6);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px #c084fc80;
+    }
+    .social-links a {
+      color: #cbd5e1;
+      font-size: 1.8rem;
+      margin: 0 0.8rem;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .social-links a:hover {
+      color: #c084fc;
+      transform: translateY(-4px);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #23283a;
+    }
+
+    @media (max-width: 800px) {
+      .navbar .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 0.8rem;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .typing {
+        font-size: 1.1rem;
+      }
+      section {
+        padding: 3rem 1.2rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #c084fc;
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      background: rgba(192,132,252,0.1);
+    }
+    .skills-grid, .contact-grid {
+      display: block;
+    }
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 700px) {
+      .grid-2-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">MANJU<span style="color:#c084fc">.dev</span></div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-content fade-up">
+    <span style="background: #c084fc20; padding: 0.4rem 1.2rem; border-radius: 40px; font-size:0.9rem; display: inline-block; margin-bottom: 1rem;">👋 Machine Learning Engineer</span>
+    <h1>Manju A R</h1>
+    <div class="typing" id="typedText"></div>
+    <p class="hero-desc">Building predictive models, NLP systems & RL solutions with Python.<br>📍 Mysuru, Karnataka | <i class="fas fa-envelope"></i> mr.manju.a.r@gmail.com</p>
+    <div style="margin-top: 2rem;">
+      <a href="#contact" class="btn-primary" style="text-decoration:none;">Hire Me →</a>
+      <a href="#projects" class="btn-primary btn-outline" style="text-decoration:none; background:transparent; border:1px solid #c084fc; margin-left:1rem;">Explore Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <h2 class="section-title fade-up">About Me</h2>
+  <div class="glass-card fade-up" style="padding: 2rem;">
+    <p style="font-size:1.1rem; line-height:1.6">Machine Learning Engineer with practical experience in developing predictive models, NLP systems, and reinforcement learning solutions. Built and deployed projects in traffic simulation and healthcare analytics, achieving measurable performance improvements. Actively shares work on GitHub and seeks to contribute to real-world ML applications while expanding technical expertise. Passionate about AI-driven solutions and forensic tech.</p>
+    <div style="margin-top:1.8rem; display:flex; gap:1.8rem; flex-wrap:wrap;">
+      <span><i class="fab fa-github"></i> <strong>github.com/MANJU-AR</strong></span>
+      <span><i class="fab fa-linkedin"></i> <strong>linkedin.com/in/manju-a-r</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <h2 class="section-title fade-up">Technical Arsenal</h2>
+  <div class="glass-card fade-up" style="padding: 2rem;">
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-label"><span>Python / ML</span><span>92%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="92"></div></div></div>
+      <div class="skill-item"><div class="skill-label"><span>Scikit-Learn & NLP</span><span>88%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="88"></div></div></div>
+      <div class="skill-item"><div class="skill-label"><span>Deep Learning</span><span>85%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="85"></div></div></div>
+      <div class="skill-item"><div class="skill-label"><span>SQL / MongoDB</span><span>80%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="80"></div></div></div>
+      <div class="skill-item"><div class="skill-label"><span>Power BI / Visualization</span><span>84%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="84"></div></div></div>
+      <div class="skill-item"><div class="skill-label"><span>Flask / GCP / Streamlit</span><span>78%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="78"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Timeline -->
+<section id="experience">
+  <h2 class="section-title fade-up">Journey & Internships</h2>
+  <div class="timeline fade-up">
+    <div class="timeline-item"><div class="timeline-dot"></div><h3>Python & Data Science Intern</h3><span style="color:#a5b4fc">QSpiders, Mysuru | Jan 2026 - Present</span><p>Building strong foundation in Python for data science, upcoming projects with Pandas, NumPy, and machine learning techniques.</p></div>
+    <div class="timeline-item"><div class="timeline-dot"></div><h3>Data Science Intern (Remote)</h3><span style="color:#a5b4fc">Infotact Solutions, Bengaluru | Jul 2025 - Sep 2025</span><p>Developed Q-learning model for traffic signals with SUMO simulation, reduced average vehicle wait time by 12%. Real-time traffic flow analysis implementation.</p></div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+  <h2 class="section-title fade-up">Flagship Projects</h2>
+  <div class="projects-grid" id="projectsGrid">
+    <div class="project-card" data-modal="modal1"><div class="project-icon"><i class="fas fa-robot"></i></div><h3>Forensic Face Sketch & Recognition</h3><p>FaceNet embeddings + MTCNN, Flask deployment | Published in IJRCST</p><span style="color:#c084fc; font-size:0.9rem;">Click for details →</span></div>
+    <div class="project-card" data-modal="modal2"><div class="project-icon"><i class="fas fa-heartbeat"></i></div><h3>Heart Disease Prediction</h3><p>Logistic Regression | 85% accuracy | Flask Web App for real-time risk.</p><span style="color:#c084fc; font-size:0.9rem;">Click for details →</span></div>
+    <div class="project-card" data-modal="modal3"><div class="project-icon"><i class="fas fa-traffic-light"></i></div><h3>Traffic Simulation + RL</h3><p>SUMO + Q-Learning: 12% wait time reduction, dynamic signal control.</p><span style="color:#c084fc; font-size:0.9rem;">Click for details →</span></div>
+  </div>
+</section>
+
+<!-- Education & Certifications -->
+<section id="education">
+  <h2 class="section-title fade-up">Education & Credentials</h2>
+  <div class="glass-card fade-up" style="padding: 2rem; margin-bottom:2rem;">
+    <h3>🎓 B.E. Computer Science & Engineering</h3>
+    <p>SDM Institute of Technology, Ujire | CGPA: 8.50 | Dec 2022 - Present</p>
+    <h3 style="margin-top:1.2rem">📚 Pre-University (PCMCs)</h3>
+    <p>Sadvidya Composite PU College, Mysuru | Percentage: 71.83%</p>
+  </div>
+  <div class="glass-card fade-up" style="padding: 2rem;">
+    <h3>📜 Certifications</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top:1.2rem;">
+      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Machine Learning - IBM</span>
+      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Python for Data Science - Udemy</span>
+      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Google AI Essentials</span>
+      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Data Analytics - Forage</span>
+    </div>
+    <h3 style="margin-top:2rem">🏆 Extracurricular</h3>
+    <p>✨ Student Coordinator, Youth Red Cross: Organized blood donation drives (200+ donors), first aid sessions.<br>✨ Bharat Scouts and Guides: Rajya Puraskar for community service & leadership.</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2 class="section-title fade-up">Let’s Connect</h2>
+  <div class="glass-card fade-up" style="padding: 2rem;">
+    <div class="grid-2-col">
+      <div>
+        <h3 style="margin-bottom: 1rem;">Reach out directly</h3>
+        <p style="margin: 0.8rem 0;"><i class="fas fa-phone-alt" style="width: 2rem;"></i> +91 8147551708</p>
+        <p style="margin: 0.8rem 0;"><i class="fas fa-envelope" style="width: 2rem;"></i> mr.manju.a.r@gmail.com</p>
+        <div class="social-links" style="margin-top: 2rem;">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <form class="contact-form" id="demoForm">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Email address">
+        <textarea rows="3" placeholder="Your message..."></textarea>
+        <button type="submit" class="btn-primary" style="width:100%">Send Message <i class="fas fa-paper-plane"></i></button>
+        <p style="font-size:0.8rem; margin-top:0.8rem; color:#c4b5fd;" id="formFeedback"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Manju A R — Crafted with <i class="fas fa-heart" style="color:#c084fc"></i> for innovation</p>
+</footer>
+
+<!-- Modals -->
+<div id="modal1" class="modal"><div class="modal-content"><h3>🔍 Forensic Face Sketch</h3><p>Tech: Python, MTCNN, FaceNet, Flask. Publication: FaceNet-Driven Forensic Face Sketch Construction and Database Matching (IJRCST). Drag-and-drop sketch interface, suspect identification via embeddings. Live: eye-dentify.vercel.app</p><button class="btn-primary" style="margin-top:1rem" onclick="closeModal('modal1')">Close</button></div></div>
+<div id="modal2" class="modal"><div class="modal-content"><h3>❤️ Heart Disease Prediction Web App</h3><p>Logistic Regression with 85% accuracy. Flask web app enabling real-time risk prediction, deployed with interactive dashboard. GitHub: github.com/MANJU-AR/...</p><button class="btn-primary" onclick="closeModal('modal2')">Close</button></div></div>
+<div id="modal3" class="modal"><div class="modal-content"><h3>🚦 Traffic Simulation + Q-Learning</h3><p>SUMO environment, reinforcement learning agent reduces average wait time by 12%. Real-time traffic flow adaptation, open-source simulation contribution. GitHub: github.com/MANJU-AR/...</p><button class="btn-primary" onclick="closeModal('modal3')">Close</button></div></div>
+
+<script>
+  // Typing effect
+  const texts = ["Machine Learning Engineer", "Reinforcement Learning Enthusiast", "Full-Stack ML Dev", "Problem Solver"];
+  let idx = 0, charIdx = 0, isDeleting = false;
+  const typedSpan = document.getElementById("typedText");
+  function typeEffect() {
+    const current = texts[idx];
+    if (!isDeleting && charIdx <= current.length) {
+      typedSpan.innerHTML = current.substring(0, charIdx);
+      charIdx++;
+      if (charIdx > current.length) { isDeleting = true; setTimeout(typeEffect, 1800); return; }
+    } else if (isDeleting && charIdx >= 0) {
+      typedSpan.innerHTML = current.substring(0, charIdx);
+      charIdx--;
+      if (charIdx < 0) { isDeleting = false; idx = (idx+1)%texts.length; charIdx=0; }
+    }
+    setTimeout(typeEffect, isDeleting ? 70 : 120);
+  }
+  typeEffect();
+
+  // scroll progress
+  window.addEventListener("scroll", () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+    const backBtn = document.getElementById("backToTop");
+    if (winScroll > 300) backBtn.classList.add("show");
+    else backBtn.classList.remove("show");
+  });
+  document.getElementById("backToTop").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Intersection Observer for fade-up and skill bars
+  const faders = document.querySelectorAll(".fade-up");
+  const skillFills = document.querySelectorAll(".progress-fill");
+  let skillsAnimated = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        if (!skillsAnimated && entry.target.closest("#skills")) {
+          skillFills.forEach(fill => {
+            const width = fill.getAttribute("data-skill");
+            fill.style.width = width + "%";
+          });
+          skillsAnimated = true;
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+  faders.forEach(el => observer.observe(el));
+  // fallback
+  setTimeout(() => {
+    if(!skillsAnimated) skillFills.forEach(f => f.style.width = f.getAttribute("data-skill")+"%");
+  }, 1000);
+
+  // active nav highlight
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const secTop = section.offsetTop - 150;
+      if (pageYOffset >= secTop) current = section.getAttribute("id");
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#"+current) link.classList.add("active");
+    });
+  });
+
+  // modals
+  const cards = document.querySelectorAll(".project-card");
+  cards.forEach(card => {
+    card.addEventListener("click", (e) => {
+      const modalId = card.getAttribute("data-modal");
+      if (modalId) document.getElementById(modalId).style.display = "flex";
+    });
+  });
+  window.closeModal = (id) => {
+    document.getElementById(id).style.display = "none";
+  };
+  window.onclick = (e) => {
+    if (e.target.classList && e.target.classList.contains("modal")) e.target.style.display = "none";
+  };
+
+  // contact form demo
+  const formDemo = document.getElementById("demoForm");
+  if(formDemo){
+    formDemo.addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("formFeedback").innerText = "✨ Message sent! Manju will reach out soon.";
+      formDemo.reset();
+      setTimeout(()=> document.getElementById("formFeedback").innerText = "", 3500);
+    });
+  }
+
+  // subtle parallax
+  document.addEventListener("mousemove", (e) => {
+    const moveX = (e.clientX - window.innerWidth/2) * 0.008;
+    const moveY = (e.clientY - window.innerHeight/2) * 0.008;
+    const heroContent = document.querySelector(".hero-content");
+    if(heroContent) heroContent.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+</script>
+</body>
+</html>

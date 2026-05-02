@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Manju A R |Computer Science Engineer,Machine Learning & Data Science Enthusiast</title>
+  <title>Manju A R | Computer Science Engineer, Machine Learning & Data Science Enthusiast</title>
   <meta name="description" content="Portfolio of Manju A R - Machine Learning Engineer, Data Scientist, and Python Developer specializing in predictive modeling, NLP, and AI deployment.">
   <meta name="author" content="Manju A R">
-  <meta property="og:title" content="Manju A R |  Portfolio">
+  <meta property="og:title" content="Manju A R | Portfolio">
   <meta property="og:description" content="Premium portfolio showcasing ML projects, skills, and professional journey.">
   
   <!-- Tailwind CSS + Google Fonts + Font Awesome -->
@@ -66,10 +66,6 @@
     .neon-glow {
       box-shadow: 0 0 15px rgba(59,130,246,0.3);
     }
-    /* Skill bar fill animation */
-    .skill-fill {
-      transition: width 1.2s cubic-bezier(0.22, 0.97, 0.36, 1);
-    }
     /* 3D tilt effect on cards */
     .tilt-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -111,6 +107,37 @@
     }
     .file-input-label:hover {
       background: rgba(255,255,255,0.3);
+    }
+    /* Skill chip styling */
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+    .skill-chip:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+    }
+    .skill-chip i {
+      color: #22d3ee;
+      font-size: 0.9rem;
+    }
+    .skill-category-card {
+      transition: all 0.3s ease;
+    }
+    .skill-category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.3);
     }
   </style>
 </head>
@@ -216,10 +243,10 @@
       </div>
     </section>
 
-    <!-- SKILLS SECTION with animated bars -->
-    <section id="skills" class="py-20 px-6 max-w-6xl mx-auto section-hidden">
+    <!-- SKILLS SECTION - Modern Chip Design Without Percentage Bars -->
+    <section id="skills" class="py-20 px-6 max-w-7xl mx-auto section-hidden">
       <h2 class="text-4xl font-bold text-center mb-12">Technical Arsenal</h2>
-      <div class="grid md:grid-cols-2 gap-8" id="skillsContainer"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="skillsContainer"></div>
     </section>
 
     <!-- INTERNSHIPS -->
@@ -469,38 +496,41 @@
     hiddenSections.forEach(section => observer.observe(section));
     
     // --------------------------------------------------------------
-    // 6. Skills Data + Animated Bars
+    // 6. Skills Data - Modern Chip Layout (No Percentage Bars)
     // --------------------------------------------------------------
     const skillCategories = [
-      { name: "Languages", skills: ["Python", "C", "Java"] },
-      { name: "Machine Learning", skills: ["Scikit-Learn", "NLP", "Deep Learning", "EDA"] },
-      { name: "Data", skills: ["NumPy", "Pandas", "Data Wrangling"] },
-      { name: "Visualization", skills: ["Power BI", "Matplotlib", "Seaborn"] },
-      { name: "Databases", skills: ["Oracle SQL", "MongoDB"] },
-      { name: "Frameworks/Tools", skills: ["Flask", "GCP", "Streamlit", "Excel"] }
+      { name: "💻 Languages", icon: "fa-code", skills: ["Python", "C", "Java"] },
+      { name: "🤖 Machine Learning", icon: "fa-brain", skills: ["Scikit-Learn", "NLP", "Deep Learning", "EDA", "Reinforcement Learning"] },
+      { name: "📊 Data Science", icon: "fa-chart-line", skills: ["NumPy", "Pandas", "Data Wrangling", "Statistical Analysis"] },
+      { name: "📈 Visualization", icon: "fa-chart-simple", skills: ["Power BI", "Matplotlib", "Seaborn", "Excel"] },
+      { name: "🗄️ Databases", icon: "fa-database", skills: ["Oracle SQL", "MongoDB"] },
+      { name: "🛠️ Frameworks & Tools", icon: "fa-tools", skills: ["Flask", "GCP", "Streamlit", "Git","Figma","VS Code"] }
     ];
+    
     const skillsContainer = document.getElementById('skillsContainer');
     function buildSkills() {
       skillsContainer.innerHTML = '';
       skillCategories.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'glass p-5 rounded-2xl';
-        card.innerHTML = `<h3 class="text-2xl font-semibold mb-3">${cat.name}</h3>${cat.skills.map(skill => `
-          <div class="mb-3">
-            <div class="flex justify-between"><span>${skill}</span><span class="text-cyan-300">85%</span></div>
-            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
-              <div class="skill-fill h-full w-0 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" data-width="85%"></div>
+        card.className = 'glass-card rounded-2xl p-6 skill-category-card transition-all duration-300';
+        card.innerHTML = `
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-400/30">
+              <i class="fas ${cat.icon} text-cyan-400 text-lg"></i>
             </div>
+            <h3 class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent">${cat.name}</h3>
           </div>
-        `).join('')}`;
+          <div class="flex flex-wrap gap-3">
+            ${cat.skills.map(skill => `
+              <div class="skill-chip">
+                <i class="fas fa-microchip text-xs"></i>
+                <span>${skill}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
         skillsContainer.appendChild(card);
       });
-      setTimeout(() => {
-        document.querySelectorAll('.skill-fill').forEach(bar => {
-          const width = bar.getAttribute('data-width');
-          bar.style.width = width;
-        });
-      }, 300);
     }
     buildSkills();
     
@@ -511,7 +541,6 @@
     const profilePlaceholder = document.getElementById('profilePlaceholder');
     const profileImg = document.getElementById('profileImg');
     
-    // Function to save and display image from data URL
     function setProfileImage(imageDataUrl) {
       if (imageDataUrl) {
         profileImg.src = imageDataUrl;
@@ -541,32 +570,24 @@
       }
       
       defaultImagePaths.forEach(path => tryLoadImage(path));
-      
-      setTimeout(() => {
-        if (!loaded && !localStorage.getItem('profilePhoto')) {
-        }
-      }, 500);
     }
     
-    // Handle new photo upload
     photoInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = function(event) {
-          const imageDataUrl = event.target.result;
-          setProfileImage(imageDataUrl);
+          setProfileImage(event.target.result);
         };
         reader.readAsDataURL(file);
       }
     });
     
     // --------------------------------------------------------------
-    // 8. Resume Download (with placeholder)
+    // 8. Resume Download
     // --------------------------------------------------------------
     document.getElementById('downloadResumeBtn').addEventListener('click', () => {
-      alert("📄RESUME DOWNLOADING");
-      // Optional: try to trigger download if resume exists
+      alert("📄 RESUME DOWNLOADING");
       const resumeLink = document.createElement('a');
       resumeLink.href = 'MANJU A R.pdf';
       resumeLink.download = 'MANJU A R.pdf';
@@ -593,7 +614,7 @@
       });
     });
     
-    console.log("✅ Portfolio Ready — Photo persists across refreshes! Place profile.jpg in same folder as fallback.");
+    console.log("✅ Portfolio Ready — Technical Arsenal now uses modern skill chips without percentage bars.");
   </script>
 </body>
 </html>

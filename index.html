@@ -2,614 +2,602 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Manju A R | AI Engineer Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Manju A R | Machine Learning Engineer & Data Scientist</title>
+  <meta name="description" content="Portfolio of Manju A R - Machine Learning Engineer, Data Scientist, and Python Developer specializing in predictive modeling, NLP, and AI deployment.">
+  <meta name="author" content="Manju A R">
+  <meta property="og:title" content="Manju A R | AI Engineer Portfolio">
+  <meta property="og:description" content="Premium portfolio showcasing ML projects, skills, and professional journey.">
+  
+  <!-- Tailwind CSS + Google Fonts + Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      background: #0a0f1a;
       font-family: 'Inter', sans-serif;
-      color: #eef2ff;
       overflow-x: hidden;
+      background-color: #0a0a1a;
+    }
+    /* Custom cursor glow */
+    .cursor-glow {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(139,92,246,0) 70%);
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s linear;
+    }
+    /* Smooth scroll */
+    html {
       scroll-behavior: smooth;
     }
-
+    /* Custom scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #11161f;
+      background: #0f0f1f;
     }
     ::-webkit-scrollbar-thumb {
-      background: #c084fc;
-      border-radius: 6px;
+      background: linear-gradient(135deg, #3b82f6, #a855f7);
+      border-radius: 10px;
     }
-
-    .glass-card {
-      background: rgba(18, 24, 36, 0.75);
+    /* Glassmorphism utility */
+    .glass {
+      background: rgba(15, 25, 35, 0.55);
       backdrop-filter: blur(12px);
-      border-radius: 2rem;
-      border: 1px solid rgba(192, 132, 252, 0.3);
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .glass-card:hover {
-      border-color: rgba(192, 132, 252, 0.6);
-      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
+    .glass-card {
+      background: rgba(20, 30, 45, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8, 12, 20, 0.92);
+    .neon-glow {
+      box-shadow: 0 0 15px rgba(59,130,246,0.3);
+    }
+    /* Skill bar fill animation */
+    .skill-fill {
+      transition: width 1.2s cubic-bezier(0.22, 0.97, 0.36, 1);
+    }
+    /* 3D tilt effect on cards */
+    .tilt-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tilt-card:hover {
+      transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
+    }
+    /* Navbar blur on scroll */
+    .navbar-blur {
+      background: rgba(10, 10, 26, 0.75);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(192, 132, 252, 0.4);
-      padding: 0.9rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .nav-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+    /* Section reveal animation */
+    .section-hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-out;
     }
-    .logo {
-      font-family: 'Space Grotesk', monospace;
-      font-weight: 700;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, #f0f0ff, #c084fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .section-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #ccd6f6;
-      font-weight: 500;
-      transition: 0.2s;
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: #c084fc;
-    }
-    .progress-container {
+    /* Particle canvas */
+    #particle-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 3px;
-      background: transparent;
-      z-index: 2000;
-    }
-    .progress-bar {
-      height: 3px;
-      background: linear-gradient(90deg, #c084fc, #8b5cf6);
-      width: 0%;
-      transition: width 0.1s;
-    }
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: #1a1f2e;
-      width: 48px;
-      height: 48px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      z-index: 999;
-      border: 1px solid #c084fc;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    .back-to-top i {
-      color: #c084fc;
-      font-size: 1.4rem;
-    }
-
-    section {
-      padding: 5rem 2rem;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 3rem;
-      font-family: 'Space Grotesk', sans-serif;
-      background: linear-gradient(120deg, #e9eaff, #c084fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-    }
-
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-content {
-      z-index: 2;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    .typing {
-      font-size: 1.8rem;
-      font-weight: 500;
-      margin: 1rem 0;
-      color: #c4b5fd;
-    }
-    .hero-desc {
-      max-width: 700px;
-      margin: 1.5rem auto;
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    .skill-item {
-      margin-bottom: 1.5rem;
-    }
-    .skill-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-    .progress-bg {
-      background: #1e2538;
-      border-radius: 20px;
-      height: 8px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, #c084fc, #a78bfa);
-      border-radius: 20px;
-      transition: width 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      pointer-events: none;
+      z-index: -1;
     }
-
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-      padding-left: 2rem;
-      border-left: 2px solid #c084fc;
-    }
-    .timeline-dot {
-      position: absolute;
-      left: -8px;
-      top: 0;
-      width: 14px;
-      height: 14px;
-      background: #c084fc;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #c084fc;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    .project-card {
-      background: rgba(18, 24, 36, 0.85);
-      backdrop-filter: blur(8px);
-      border-radius: 1.5rem;
-      padding: 1.8rem;
-      transition: all 0.3s;
+    /* File input styling */
+    .file-input-label {
       cursor: pointer;
-      border: 1px solid rgba(192, 132, 252, 0.3);
+      transition: all 0.2s ease;
     }
-    .project-card:hover {
-      transform: translateY(-10px);
-      border-color: #c084fc;
-      box-shadow: 0 20px 30px -15px #00000070;
-    }
-    .project-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #c084fc;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(12px);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .modal-content {
-      max-width: 500px;
-      background: #10131f;
-      border-radius: 2rem;
-      padding: 2rem;
-      border: 1px solid #c084fc;
-    }
-
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: #141a2a;
-      border: 1px solid #2a2f42;
-      border-radius: 1rem;
-      color: white;
-      transition: 0.2s;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #c084fc;
-      outline: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #c084fc, #8b5cf6);
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 2rem;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-primary:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 20px #c084fc80;
-    }
-    .social-links a {
-      color: #cbd5e1;
-      font-size: 1.8rem;
-      margin: 0 0.8rem;
-      transition: 0.2s;
-      display: inline-block;
-    }
-    .social-links a:hover {
-      color: #c084fc;
-      transform: translateY(-4px);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid #23283a;
-    }
-
-    @media (max-width: 800px) {
-      .navbar .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 0.8rem;
-      }
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      .typing {
-        font-size: 1.1rem;
-      }
-      section {
-        padding: 3rem 1.2rem;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .contact-grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid #c084fc;
-      margin-left: 1rem;
-    }
-    .btn-outline:hover {
-      background: rgba(192,132,252,0.1);
-    }
-    .skills-grid, .contact-grid {
-      display: block;
-    }
-    .grid-2-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    @media (max-width: 700px) {
-      .grid-2-col {
-        grid-template-columns: 1fr;
-      }
+    .file-input-label:hover {
+      background: rgba(255,255,255,0.3);
     }
   </style>
 </head>
-<body>
-<div class="progress-container">
-  <div class="progress-bar" id="progressBar"></div>
-</div>
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="logo">MANJU<span style="color:#c084fc">.dev</span></div>
-    <ul class="nav-links">
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#experience" class="nav-link">Experience</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#education" class="nav-link">Education</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
+<body class="text-white">
+
+  <!-- Particle Background Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+  
+  <!-- Scroll Progress Indicator -->
+  <div class="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
+    <div id="scrollProgress" class="h-full bg-gradient-to-r from-cyan-400 to-purple-600 w-0"></div>
   </div>
-</nav>
-
-<div class="back-to-top" id="backToTop">
-  <i class="fas fa-arrow-up"></i>
-</div>
-
-<!-- Hero Section -->
-<section id="home" class="hero">
-  <div class="hero-content fade-up">
-    <span style="background: #c084fc20; padding: 0.4rem 1.2rem; border-radius: 40px; font-size:0.9rem; display: inline-block; margin-bottom: 1rem;">👋 Machine Learning Engineer</span>
-    <h1>Manju A R</h1>
-    <div class="typing" id="typedText"></div>
-    <p class="hero-desc">Building predictive models, NLP systems & RL solutions with Python.<br>📍 Mysuru, Karnataka | <i class="fas fa-envelope"></i> mr.manju.a.r@gmail.com</p>
-    <div style="margin-top: 2rem;">
-      <a href="#contact" class="btn-primary" style="text-decoration:none;">Hire Me →</a>
-      <a href="#projects" class="btn-primary btn-outline" style="text-decoration:none; background:transparent; border:1px solid #c084fc; margin-left:1rem;">Explore Work</a>
+  
+  <!-- Sticky Navbar -->
+  <nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-6 md:px-12 flex justify-between items-center">
+    <div class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">MANJU<span class="text-white"> A R</span></div>
+    <div class="hidden md:flex space-x-6 text-gray-200 font-medium">
+      <a href="#home" class="nav-link hover:text-cyan-300 transition">Home</a>
+      <a href="#about" class="nav-link hover:text-cyan-300 transition">About</a>
+      <a href="#education" class="nav-link hover:text-cyan-300 transition">Education</a>
+      <a href="#skills" class="nav-link hover:text-cyan-300 transition">Skills</a>
+      <a href="#internships" class="nav-link hover:text-cyan-300 transition">Internships</a>
+      <a href="#projects" class="nav-link hover:text-cyan-300 transition">Projects</a>
+      <a href="#contact" class="nav-link hover:text-cyan-300 transition">Contact</a>
     </div>
-  </div>
-</section>
-
-<!-- About Section -->
-<section id="about">
-  <h2 class="section-title fade-up">About Me</h2>
-  <div class="glass-card fade-up" style="padding: 2rem;">
-    <p style="font-size:1.1rem; line-height:1.6">Machine Learning Engineer with practical experience in developing predictive models, NLP systems, and reinforcement learning solutions. Built and deployed projects in traffic simulation and healthcare analytics, achieving measurable performance improvements. Actively shares work on GitHub and seeks to contribute to real-world ML applications while expanding technical expertise. Passionate about AI-driven solutions and forensic tech.</p>
-    <div style="margin-top:1.8rem; display:flex; gap:1.8rem; flex-wrap:wrap;">
-      <span><i class="fab fa-github"></i> <strong>github.com/MANJU-AR</strong></span>
-      <span><i class="fab fa-linkedin"></i> <strong>linkedin.com/in/manju-a-r</strong></span>
-    </div>
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills">
-  <h2 class="section-title fade-up">Technical Arsenal</h2>
-  <div class="glass-card fade-up" style="padding: 2rem;">
-    <div class="skills-grid">
-      <div class="skill-item"><div class="skill-label"><span>Python / ML</span><span>92%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="92"></div></div></div>
-      <div class="skill-item"><div class="skill-label"><span>Scikit-Learn & NLP</span><span>88%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="88"></div></div></div>
-      <div class="skill-item"><div class="skill-label"><span>Deep Learning</span><span>85%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="85"></div></div></div>
-      <div class="skill-item"><div class="skill-label"><span>SQL / MongoDB</span><span>80%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="80"></div></div></div>
-      <div class="skill-item"><div class="skill-label"><span>Power BI / Visualization</span><span>84%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="84"></div></div></div>
-      <div class="skill-item"><div class="skill-label"><span>Flask / GCP / Streamlit</span><span>78%</span></div><div class="progress-bg"><div class="progress-fill" data-skill="78"></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Experience Timeline -->
-<section id="experience">
-  <h2 class="section-title fade-up">Journey & Internships</h2>
-  <div class="timeline fade-up">
-    <div class="timeline-item"><div class="timeline-dot"></div><h3>Python & Data Science Intern</h3><span style="color:#a5b4fc">QSpiders, Mysuru | Jan 2026 - Present</span><p>Building strong foundation in Python for data science, upcoming projects with Pandas, NumPy, and machine learning techniques.</p></div>
-    <div class="timeline-item"><div class="timeline-dot"></div><h3>Data Science Intern (Remote)</h3><span style="color:#a5b4fc">Infotact Solutions, Bengaluru | Jul 2025 - Sep 2025</span><p>Developed Q-learning model for traffic signals with SUMO simulation, reduced average vehicle wait time by 12%. Real-time traffic flow analysis implementation.</p></div>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <h2 class="section-title fade-up">Flagship Projects</h2>
-  <div class="projects-grid" id="projectsGrid">
-    <div class="project-card" data-modal="modal1"><div class="project-icon"><i class="fas fa-robot"></i></div><h3>Forensic Face Sketch & Recognition</h3><p>FaceNet embeddings + MTCNN, Flask deployment | Published in IJRCST</p><span style="color:#c084fc; font-size:0.9rem;">Click for details →</span></div>
-    <div class="project-card" data-modal="modal2"><div class="project-icon"><i class="fas fa-heartbeat"></i></div><h3>Heart Disease Prediction</h3><p>Logistic Regression | 85% accuracy | Flask Web App for real-time risk.</p><span style="color:#c084fc; font-size:0.9rem;">Click for details →</span></div>
-    <div class="project-card" data-modal="modal3"><div class="project-icon"><i class="fas fa-traffic-light"></i></div><h3>Traffic Simulation + RL</h3><p>SUMO + Q-Learning: 12% wait time reduction, dynamic signal control.</p><span style="color:#c084fc; font-size:0.9rem;">Click for details →</span></div>
-  </div>
-</section>
-
-<!-- Education & Certifications -->
-<section id="education">
-  <h2 class="section-title fade-up">Education & Credentials</h2>
-  <div class="glass-card fade-up" style="padding: 2rem; margin-bottom:2rem;">
-    <h3>🎓 B.E. Computer Science & Engineering</h3>
-    <p>SDM Institute of Technology, Ujire | CGPA: 8.50 | Dec 2022 - Present</p>
-    <h3 style="margin-top:1.2rem">📚 Pre-University (PCMCs)</h3>
-    <p>Sadvidya Composite PU College, Mysuru | Percentage: 71.83%</p>
-  </div>
-  <div class="glass-card fade-up" style="padding: 2rem;">
-    <h3>📜 Certifications</h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top:1.2rem;">
-      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Machine Learning - IBM</span>
-      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Python for Data Science - Udemy</span>
-      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Google AI Essentials</span>
-      <span style="background: rgba(192,132,252,0.15); padding: 0.4rem 1rem; border-radius: 2rem; font-size:0.85rem;">Data Analytics - Forage</span>
-    </div>
-    <h3 style="margin-top:2rem">🏆 Extracurricular</h3>
-    <p>✨ Student Coordinator, Youth Red Cross: Organized blood donation drives (200+ donors), first aid sessions.<br>✨ Bharat Scouts and Guides: Rajya Puraskar for community service & leadership.</p>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-  <h2 class="section-title fade-up">Let’s Connect</h2>
-  <div class="glass-card fade-up" style="padding: 2rem;">
-    <div class="grid-2-col">
-      <div>
-        <h3 style="margin-bottom: 1rem;">Reach out directly</h3>
-        <p style="margin: 0.8rem 0;"><i class="fas fa-phone-alt" style="width: 2rem;"></i> +91 8147551708</p>
-        <p style="margin: 0.8rem 0;"><i class="fas fa-envelope" style="width: 2rem;"></i> mr.manju.a.r@gmail.com</p>
-        <div class="social-links" style="margin-top: 2rem;">
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#contact" class="px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold hover:shadow-lg transition hover:scale-105">Hire Me</a>
+  </nav>
+  
+  <!-- Scroll To Top Button -->
+  <button id="scrollToTop" class="fixed bottom-8 right-6 z-50 p-3 rounded-full glass text-white shadow-lg backdrop-blur-md border border-cyan-400/40 hover:scale-110 transition-all hidden">
+    <i class="fas fa-arrow-up text-xl"></i>
+  </button>
+  
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-24 pb-20 relative">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="hero-text">
+          <div class="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-cyan-300 text-sm mb-4 border border-blue-500/30 animate-pulse">✨ OPEN TO WORK</div>
+          <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight"><span class="bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">MANJU A R</span></h1>
+          <div class="mt-4 text-2xl lg:text-3xl font-semibold flex flex-wrap gap-2 items-center">
+            <span class="text-gray-300">✦</span>
+            <span id="typing-text" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 min-w-[240px]"></span>
+            <span class="animate-pulse text-cyan-400">|</span>
+          </div>
+          <p class="mt-6 text-gray-300 text-lg max-w-md">Machine Learning Engineer with practical experience in predictive modeling, NLP, reinforcement learning, and full-stack deployment.</p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href="#projects" class="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 font-semibold shadow-lg hover:scale-105 transition-transform">View Projects</a>
+            <button id="downloadResumeBtn" class="px-6 py-3 rounded-full glass border border-white/20 font-semibold backdrop-blur-sm hover:scale-105 transition-transform">Download Resume</button>
+            <a href="#contact" class="px-6 py-3 rounded-full glass border border-purple-400/50 font-semibold hover:scale-105 transition-transform">Contact Me</a>
+          </div>
+        </div>
+        <div class="relative flex justify-center">
+          <div class="w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden glass border-4 border-cyan-400/30 shadow-2xl flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900 group">
+            <div class="text-center p-4" id="profilePlaceholder">
+              <i class="fas fa-user-circle text-8xl text-cyan-300 mb-2"></i>
+              <p class="text-sm text-gray-300">Add Your Photo Here</p>
+              <label class="file-input-label mt-2 inline-block px-3 py-1 text-xs bg-white/20 rounded-full cursor-pointer hover:bg-white/30 transition">
+                <i class="fas fa-upload mr-1"></i> Upload
+                <input type="file" id="photoUpload" accept="image/*" class="hidden">
+              </label>
+              <p class="text-xs text-gray-400 mt-2">or place "profile.jpg" in folder</p>
+            </div>
+            <img id="profileImg" class="hidden w-full h-full object-cover" alt="Profile">
+          </div>
         </div>
       </div>
-      <form class="contact-form" id="demoForm">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Email address">
-        <textarea rows="3" placeholder="Your message..."></textarea>
-        <button type="submit" class="btn-primary" style="width:100%">Send Message <i class="fas fa-paper-plane"></i></button>
-        <p style="font-size:0.8rem; margin-top:0.8rem; color:#c4b5fd;" id="formFeedback"></p>
-      </form>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <p>© 2025 Manju A R — Crafted with <i class="fas fa-heart" style="color:#c084fc"></i> for innovation</p>
-</footer>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-300 to-purple-400 inline-block w-full">About Me</h2>
+      <div class="glass p-8 rounded-2xl backdrop-blur-sm border border-white/10 shadow-xl">
+        <p class="text-gray-200 text-lg leading-relaxed">Machine Learning Engineer with hands-on experience in predictive analytics, reinforcement learning, NLP, and deployment. Passionate about solving real-world problems through AI and building scalable intelligent systems. I transform data into actionable insights and build robust models that drive impact across healthcare, traffic simulations, and forensic AI.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-sm text-gray-300">
+          <div><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i> Mysuru, Karnataka, India</div>
+          <div><i class="fas fa-envelope text-cyan-400 mr-2"></i> mr.manju.a.r@gmail.com</div>
+          <div><i class="fab fa-linkedin text-cyan-400 mr-2"></i> linkedin.com/in/manju-a-r-624466255</div>
+          <div><i class="fab fa-github text-cyan-400 mr-2"></i> github.com/MANJU-AR</div>
+        </div>
+      </div>
+    </section>
 
-<!-- Modals -->
-<div id="modal1" class="modal"><div class="modal-content"><h3>🔍 Forensic Face Sketch</h3><p>Tech: Python, MTCNN, FaceNet, Flask. Publication: FaceNet-Driven Forensic Face Sketch Construction and Database Matching (IJRCST). Drag-and-drop sketch interface, suspect identification via embeddings. Live: eye-dentify.vercel.app</p><button class="btn-primary" style="margin-top:1rem" onclick="closeModal('modal1')">Close</button></div></div>
-<div id="modal2" class="modal"><div class="modal-content"><h3>❤️ Heart Disease Prediction Web App</h3><p>Logistic Regression with 85% accuracy. Flask web app enabling real-time risk prediction, deployed with interactive dashboard. GitHub: github.com/MANJU-AR/...</p><button class="btn-primary" onclick="closeModal('modal2')">Close</button></div></div>
-<div id="modal3" class="modal"><div class="modal-content"><h3>🚦 Traffic Simulation + Q-Learning</h3><p>SUMO environment, reinforcement learning agent reduces average wait time by 12%. Real-time traffic flow adaptation, open-source simulation contribution. GitHub: github.com/MANJU-AR/...</p><button class="btn-primary" onclick="closeModal('modal3')">Close</button></div></div>
+    <!-- EDUCATION TIMELINE -->
+    <section id="education" class="py-20 px-6 max-w-6xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Education</h2>
+      <div class="space-y-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-cyan-400 hover:translate-x-2 transition-transform">
+          <h3 class="text-xl font-bold">B.E Computer Science and Engineering</h3>
+          <p class="text-cyan-300">SDM Institute of Technology, Ujire</p>
+          <p class="text-sm text-gray-400">Dec 2022 - Present</p>
+          <p class="mt-1">CGPA: 8.50</p>
+        </div>
+        <div class="glass p-5 rounded-xl border-l-4 border-cyan-400 hover:translate-x-2 transition-transform">
+          <h3 class="text-xl font-bold">PCMCs (PUC)</h3>
+          <p class="text-cyan-300">Sadvidya Composite PU College, Mysuru</p>
+          <p class="text-sm text-gray-400">Apr 2021 - Apr 2022</p>
+          <p class="mt-1">Percentage: 71.83%</p>
+        </div>
+      </div>
+    </section>
 
-<script>
-  // Typing effect
-  const texts = ["Machine Learning Engineer", "Reinforcement Learning Enthusiast", "Full-Stack ML Dev", "Problem Solver"];
-  let idx = 0, charIdx = 0, isDeleting = false;
-  const typedSpan = document.getElementById("typedText");
-  function typeEffect() {
-    const current = texts[idx];
-    if (!isDeleting && charIdx <= current.length) {
-      typedSpan.innerHTML = current.substring(0, charIdx);
-      charIdx++;
-      if (charIdx > current.length) { isDeleting = true; setTimeout(typeEffect, 1800); return; }
-    } else if (isDeleting && charIdx >= 0) {
-      typedSpan.innerHTML = current.substring(0, charIdx);
-      charIdx--;
-      if (charIdx < 0) { isDeleting = false; idx = (idx+1)%texts.length; charIdx=0; }
+    <!-- SKILLS SECTION with animated bars -->
+    <section id="skills" class="py-20 px-6 max-w-6xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Technical Arsenal</h2>
+      <div class="grid md:grid-cols-2 gap-8" id="skillsContainer"></div>
+    </section>
+
+    <!-- INTERNSHIPS -->
+    <section id="internships" class="py-20 px-6 max-w-7xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Internships</h2>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="glass-card rounded-2xl p-6 tilt-card transition-all duration-300">
+          <h3 class="text-2xl font-bold">Python & Data Science Intern</h3>
+          <p class="text-cyan-300">QSpiders, Mysuru | Jan 2026 - Present</p>
+          <ul class="list-disc list-inside mt-3 space-y-1 text-gray-200">
+            <li>Strong foundation in Python for data science</li>
+            <li>Working on Pandas, NumPy, ML projects</li>
+          </ul>
+        </div>
+        <div class="glass-card rounded-2xl p-6 tilt-card transition-all duration-300">
+          <h3 class="text-2xl font-bold">Data Science Intern (Remote)</h3>
+          <p class="text-cyan-300">Infotact Solutions, Bengaluru | Jul 2025 - Sep 2025</p>
+          <ul class="list-disc list-inside mt-3 space-y-1 text-gray-200">
+            <li>Built Q-learning traffic signal controller using SUMO</li>
+            <li>Reduced vehicle wait time by 12%</li>
+            <li>Real-time simulation with Reinforcement Learning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 px-6 max-w-7xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Flagship Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="glass-card p-6 rounded-2xl tilt-card">
+          <h3 class="text-2xl font-bold">Forensic Face Sketch Construction & Recognition</h3>
+          <p class="text-sm text-cyan-300">Python, MTCNN, FaceNet, Flask</p>
+          <p class="mt-3 text-gray-300">AI-based suspect identification system using face embeddings with drag-and-drop sketch generation UI. Built for forensic workflows.</p>
+          <div class="flex gap-4 mt-5">
+            <a href="https://eye-dentify.vercel.app" target="_blank" class="text-sm bg-blue-600/30 px-3 py-1 rounded-full hover:bg-blue-600/50 transition"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+            <a href="https://github.com/MANJU-AR" target="_blank" class="text-sm bg-gray-700/40 px-3 py-1 rounded-full hover:bg-gray-600/50 transition"><i class="fab fa-github mr-1"></i>GitHub</a>
+          </div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl tilt-card">
+          <h3 class="text-2xl font-bold">Heart Disease Prediction Web App</h3>
+          <p class="text-sm text-cyan-300">Python, Flask, Logistic Regression</p>
+          <p class="mt-3 text-gray-300">85% accurate ML model for real-time heart risk prediction. Deployed via Flask interactive web app.</p>
+          <div class="flex gap-4 mt-5">
+            <a href="#" class="text-sm bg-gray-700/40 px-3 py-1 rounded-full hover:bg-gray-600/50 transition"><i class="fab fa-github mr-1"></i>GitHub</a>
+            <a href="#" class="text-sm bg-cyan-600/30 px-3 py-1 rounded-full">View Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="py-20 px-6 max-w-6xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Certifications</h2>
+      <div class="flex flex-wrap justify-center gap-6">
+        <div class="glass px-6 py-4 rounded-2xl border border-cyan-400/30 flex items-center gap-3 hover:-translate-y-1 transition"><i class="fas fa-certificate text-cyan-400 text-2xl"></i><span>Machine Learning with Python – IBM</span></div>
+        <div class="glass px-6 py-4 rounded-2xl border border-cyan-400/30 flex items-center gap-3 hover:-translate-y-1 transition"><i class="fas fa-certificate text-cyan-400 text-2xl"></i><span>Python for Data Science – Udemy</span></div>
+        <div class="glass px-6 py-4 rounded-2xl border border-cyan-400/30 flex items-center gap-3 hover:-translate-y-1 transition"><i class="fas fa-certificate text-cyan-400 text-2xl"></i><span>Google AI Essentials – Google</span></div>
+        <div class="glass px-6 py-4 rounded-2xl border border-cyan-400/30 flex items-center gap-3 hover:-translate-y-1 transition"><i class="fas fa-certificate text-cyan-400 text-2xl"></i><span>Data Analytics Job Simulation – Forage</span></div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="py-20 px-6 max-w-5xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Leadership & Extra Curricular</h2>
+      <div class="glass p-6 rounded-2xl mb-4"><i class="fas fa-hand-holding-heart text-pink-400 text-2xl mr-3"></i><span class="font-bold">Student Coordinator, Youth Red Cross:</span> Organized blood donation drives (200+ donors) & first aid sessions.</div>
+      <div class="glass p-6 rounded-2xl"><i class="fas fa-campground text-green-400 text-2xl mr-3"></i><span class="font-bold">Bharat Scouts and Guides:</span> Rajya Puraskar Award for leadership/community service.</div>
+    </section>
+
+    <!-- GITHUB STATS -->
+    <section class="py-20 px-6 max-w-5xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-8">GitHub Pulse</h2>
+      <div class="glass p-6 rounded-2xl text-center">
+        <a href="https://github.com/MANJU-AR" target="_blank" class="text-cyan-300 text-lg hover:text-cyan-200"><i class="fab fa-github mr-2"></i> github.com/MANJU-AR</a>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+          <div><i class="fas fa-code-branch text-3xl text-cyan-400"></i><p class="font-bold mt-1">15+ Repos</p></div>
+          <div><i class="fas fa-chart-line text-3xl text-cyan-400"></i><p class="mt-1">Active Contributions</p></div>
+          <div><i class="fab fa-python text-3xl text-cyan-400"></i><p class="mt-1">Python 78%</p></div>
+          <div><i class="fas fa-database text-3xl text-cyan-400"></i><p class="mt-1">ML Focused</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 px-6 max-w-4xl mx-auto section-hidden">
+      <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
+      <div class="glass rounded-3xl p-8 backdrop-blur-md">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Contact Info</h3>
+            <p class="mb-2"><i class="fas fa-envelope mr-2 text-cyan-300"></i> mr.manju.a.r@gmail.com</p>
+            <p class="mb-2"><i class="fas fa-phone-alt mr-2 text-cyan-300"></i> +91 8147551708</p>
+            <p class="mb-2"><i class="fab fa-linkedin mr-2 text-cyan-300"></i> linkedin.com/in/manju-a-r</p>
+            <p class="mb-2"><i class="fab fa-github mr-2 text-cyan-300"></i> github.com/MANJU-AR</p>
+          </div>
+          <form id="contactForm">
+            <input type="text" placeholder="Your Name" class="w-full mb-4 p-3 bg-black/30 rounded-xl border border-white/20 text-white focus:outline-none focus:border-cyan-400">
+            <input type="email" placeholder="Email" class="w-full mb-4 p-3 bg-black/30 rounded-xl border border-white/20 text-white focus:outline-none focus:border-cyan-400">
+            <textarea rows="3" placeholder="Message" class="w-full mb-4 p-3 bg-black/30 rounded-xl border border-white/20 text-white focus:outline-none focus:border-cyan-400"></textarea>
+            <button type="submit" class="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 w-full font-semibold hover:shadow-lg transition">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="py-6 text-center border-t border-white/10 text-gray-400 text-sm">Designed & Built by Manju A R | AI Portfolio 2026</footer>
+
+  <script>
+    // --------------------------------------------------------------
+    // 1. Particle Background
+    // --------------------------------------------------------------
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width, height;
+    
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
     }
-    setTimeout(typeEffect, isDeleting ? 70 : 120);
-  }
-  typeEffect();
-
-  // scroll progress
-  window.addEventListener("scroll", () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById("progressBar").style.width = scrolled + "%";
-    const backBtn = document.getElementById("backToTop");
-    if (winScroll > 300) backBtn.classList.add("show");
-    else backBtn.classList.remove("show");
-  });
-  document.getElementById("backToTop").addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // Intersection Observer for fade-up and skill bars
-  const faders = document.querySelectorAll(".fade-up");
-  const skillFills = document.querySelectorAll(".progress-fill");
-  let skillsAnimated = false;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        if (!skillsAnimated && entry.target.closest("#skills")) {
-          skillFills.forEach(fill => {
-            const width = fill.getAttribute("data-skill");
-            fill.style.width = width + "%";
-          });
-          skillsAnimated = true;
+    
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2.2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.color = `rgba(80, 180, 255, ${this.opacity})`;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+    
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 130; i++) particles.push(new Particle());
+    }
+    
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    
+    window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+    resizeCanvas();
+    initParticles();
+    animateParticles();
+    
+    // --------------------------------------------------------------
+    // 2. Cursor Glow
+    // --------------------------------------------------------------
+    const cursorGlow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+    
+    // --------------------------------------------------------------
+    // 3. Typing Animation
+    // --------------------------------------------------------------
+    const roles = ["Machine Learning Engineer", "Data Scientist", "Python Developer", "AI Enthusiast"];
+    let roleIndex = 0, charIndex = 0, isDeleting = false;
+    const typingSpan = document.getElementById('typing-text');
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      if (isDeleting) {
+        typingSpan.textContent = currentRole.substring(0, charIndex--);
+        if (charIndex < 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      } else {
+        typingSpan.textContent = currentRole.substring(0, charIndex++);
+        if (charIndex > currentRole.length) {
+          isDeleting = true;
+          setTimeout(() => {}, 1000);
         }
       }
+      setTimeout(typeEffect, isDeleting ? 60 : 100);
+    }
+    typeEffect();
+    
+    // --------------------------------------------------------------
+    // 4. Scroll Progress & Navbar Effects
+    // --------------------------------------------------------------
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+      
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) navbar.classList.add('navbar-blur');
+      else navbar.classList.remove('navbar-blur');
+      
+      const topBtn = document.getElementById('scrollToTop');
+      if (window.scrollY > 500) topBtn.classList.remove('hidden');
+      else topBtn.classList.add('hidden');
+      
+      const sections = document.querySelectorAll('section[id]');
+      let current = '';
+      sections.forEach(sec => {
+        const secTop = sec.offsetTop - 120;
+        if (window.scrollY >= secTop) current = sec.getAttribute('id');
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-cyan-400', 'border-b-2', 'border-cyan-400');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('text-cyan-400', 'border-b-2', 'border-cyan-400');
+        }
+      });
     });
-  }, { threshold: 0.2 });
-  faders.forEach(el => observer.observe(el));
-  // fallback
-  setTimeout(() => {
-    if(!skillsAnimated) skillFills.forEach(f => f.style.width = f.getAttribute("data-skill")+"%");
-  }, 1000);
-
-  // active nav highlight
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const secTop = section.offsetTop - 150;
-      if (pageYOffset >= secTop) current = section.getAttribute("id");
+    
+    document.getElementById('scrollToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#"+current) link.classList.add("active");
+    
+    // --------------------------------------------------------------
+    // 5. Section reveal on scroll
+    // --------------------------------------------------------------
+    const hiddenSections = document.querySelectorAll('.section-hidden');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    hiddenSections.forEach(section => observer.observe(section));
+    
+    // --------------------------------------------------------------
+    // 6. Skills Data + Animated Bars
+    // --------------------------------------------------------------
+    const skillCategories = [
+      { name: "Languages", skills: ["Python", "C", "Java"] },
+      { name: "Machine Learning", skills: ["Scikit-Learn", "NLP", "Deep Learning", "EDA"] },
+      { name: "Data", skills: ["NumPy", "Pandas", "Data Wrangling"] },
+      { name: "Visualization", skills: ["Power BI", "Matplotlib", "Seaborn"] },
+      { name: "Databases", skills: ["Oracle SQL", "MongoDB"] },
+      { name: "Frameworks/Tools", skills: ["Flask", "GCP", "Streamlit", "Excel"] }
+    ];
+    const skillsContainer = document.getElementById('skillsContainer');
+    function buildSkills() {
+      skillsContainer.innerHTML = '';
+      skillCategories.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'glass p-5 rounded-2xl';
+        card.innerHTML = `<h3 class="text-2xl font-semibold mb-3">${cat.name}</h3>${cat.skills.map(skill => `
+          <div class="mb-3">
+            <div class="flex justify-between"><span>${skill}</span><span class="text-cyan-300">85%</span></div>
+            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+              <div class="skill-fill h-full w-0 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" data-width="85%"></div>
+            </div>
+          </div>
+        `).join('')}`;
+        skillsContainer.appendChild(card);
+      });
+      setTimeout(() => {
+        document.querySelectorAll('.skill-fill').forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = width;
+        });
+      }, 300);
+    }
+    buildSkills();
+    
+    // --------------------------------------------------------------
+    // 7. PERSISTENT PHOTO UPLOAD (localStorage + default from folder)
+    // --------------------------------------------------------------
+    const photoInput = document.getElementById('photoUpload');
+    const profilePlaceholder = document.getElementById('profilePlaceholder');
+    const profileImg = document.getElementById('profileImg');
+    
+    // Function to save and display image from data URL
+    function setProfileImage(imageDataUrl) {
+      if (imageDataUrl) {
+        profileImg.src = imageDataUrl;
+        profileImg.classList.remove('hidden');
+        profilePlaceholder.classList.add('hidden');
+        localStorage.setItem('profilePhoto', imageDataUrl);
+      }
+    }
+    
+    // Try to load saved photo from localStorage first
+    const savedPhoto = localStorage.getItem('profilePhoto');
+    if (savedPhoto) {
+      setProfileImage(savedPhoto);
+    } else {
+      // Try to load default image from folder (profile.jpg, profile.png, or default-photo.jpg)
+      const defaultImagePaths = ['profile.jpg', 'profile.png', 'default-photo.jpg', 'photo.jpg', 'manju.jpg'];
+      let loaded = false;
+      
+      function tryLoadImage(path) {
+        const img = new Image();
+        img.onload = function() {
+          if (!loaded) {
+            loaded = true;
+            setProfileImage(img.src);
+          }
+        };
+        img.onerror = function() {};
+        img.src = path;
+      }
+      
+      defaultImagePaths.forEach(path => tryLoadImage(path));
+      
+      // If no default image after 500ms, keep placeholder (already visible)
+      setTimeout(() => {
+        if (!loaded && !localStorage.getItem('profilePhoto')) {
+          // no default image found, placeholder stays
+        }
+      }, 500);
+    }
+    
+    // Handle new photo upload
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const imageDataUrl = event.target.result;
+          setProfileImage(imageDataUrl);
+        };
+        reader.readAsDataURL(file);
+      }
     });
-  });
-
-  // modals
-  const cards = document.querySelectorAll(".project-card");
-  cards.forEach(card => {
-    card.addEventListener("click", (e) => {
-      const modalId = card.getAttribute("data-modal");
-      if (modalId) document.getElementById(modalId).style.display = "flex";
+    
+    // --------------------------------------------------------------
+    // 8. Resume Download (with placeholder)
+    // --------------------------------------------------------------
+    document.getElementById('downloadResumeBtn').addEventListener('click', () => {
+      alert("📄 To add your real resume: Place 'Manju_Resume.pdf' in the same folder as this HTML file. Then update download link.\n\nTip: You can host PDF and trigger download via direct link.");
+      // Optional: try to trigger download if resume exists
+      const resumeLink = document.createElement('a');
+      resumeLink.href = 'MANJU A R.pdf';
+      resumeLink.download = 'MANJU A R.pdf';
+      resumeLink.click();
     });
-  });
-  window.closeModal = (id) => {
-    document.getElementById(id).style.display = "none";
-  };
-  window.onclick = (e) => {
-    if (e.target.classList && e.target.classList.contains("modal")) e.target.style.display = "none";
-  };
-
-  // contact form demo
-  const formDemo = document.getElementById("demoForm");
-  if(formDemo){
-    formDemo.addEventListener("submit", (e) => {
+    
+    // --------------------------------------------------------------
+    // 9. Contact Form
+    // --------------------------------------------------------------
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      document.getElementById("formFeedback").innerText = "✨ Message sent! Manju will reach out soon.";
-      formDemo.reset();
-      setTimeout(()=> document.getElementById("formFeedback").innerText = "", 3500);
+      alert("✨ Thanks for reaching out! Manju will get back to you soon.");
+      e.target.reset();
     });
-  }
-
-  // subtle parallax
-  document.addEventListener("mousemove", (e) => {
-    const moveX = (e.clientX - window.innerWidth/2) * 0.008;
-    const moveY = (e.clientY - window.innerHeight/2) * 0.008;
-    const heroContent = document.querySelector(".hero-content");
-    if(heroContent) heroContent.style.transform = `translate(${moveX}px, ${moveY}px)`;
-  });
-</script>
+    
+    // 10. Smooth anchor navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    
+    console.log("✅ Portfolio Ready — Photo persists across refreshes! Place profile.jpg in same folder as fallback.");
+  </script>
 </body>
 </html>

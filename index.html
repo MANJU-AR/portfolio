@@ -505,7 +505,7 @@
     buildSkills();
     
     // --------------------------------------------------------------
-    // 7. PERSISTENT PHOTO UPLOAD (localStorage + default from folder)
+    // 7. PERSISTENT PHOTO UPLOAD
     // --------------------------------------------------------------
     const photoInput = document.getElementById('photoUpload');
     const profilePlaceholder = document.getElementById('profilePlaceholder');
@@ -521,12 +521,10 @@
       }
     }
     
-    // Try to load saved photo from localStorage first
     const savedPhoto = localStorage.getItem('profilePhoto');
     if (savedPhoto) {
       setProfileImage(savedPhoto);
     } else {
-      // Try to load default image from folder (profile.jpg, profile.png, or default-photo.jpg)
       const defaultImagePaths = ['profile.jpg', 'profile.png', 'default-photo.jpg', 'photo.jpg', 'manju.jpg'];
       let loaded = false;
       
@@ -544,10 +542,8 @@
       
       defaultImagePaths.forEach(path => tryLoadImage(path));
       
-      // If no default image after 500ms, keep placeholder (already visible)
       setTimeout(() => {
         if (!loaded && !localStorage.getItem('profilePhoto')) {
-          // no default image found, placeholder stays
         }
       }, 500);
     }
@@ -569,7 +565,7 @@
     // 8. Resume Download (with placeholder)
     // --------------------------------------------------------------
     document.getElementById('downloadResumeBtn').addEventListener('click', () => {
-      alert("📄 To add your real resume: Place 'Manju_Resume.pdf' in the same folder as this HTML file. Then update download link.\n\nTip: You can host PDF and trigger download via direct link.");
+      alert("📄RESUME DOWNLOADING");
       // Optional: try to trigger download if resume exists
       const resumeLink = document.createElement('a');
       resumeLink.href = 'MANJU A R.pdf';

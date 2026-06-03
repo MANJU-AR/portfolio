@@ -93,11 +93,7 @@
           <div class="w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden glass border-4 border-cyan-400/30 shadow-2xl flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
             <div class="text-center p-4" id="profilePlaceholder">
               <i class="fas fa-user-circle text-8xl text-cyan-300 mb-2"></i>
-              <p class="text-sm text-gray-300">profile.jpg</p>
-              <label class="file-input-label mt-2 inline-block px-3 py-1 text-xs bg-white/20 rounded-full cursor-pointer hover:bg-white/30 transition">
-                <i class="fas fa-upload mr-1"></i> Upload
-                <input type="file" id="photoUpload" accept="image/*" class="hidden">
-              </label>
+              <p class="text-sm text-gray-300">Loading Profile Photo...</p>
             </div>
             <img id="profileImg" class="hidden w-full h-full object-cover" alt="Manju A R">
           </div>
@@ -193,7 +189,7 @@
           <p class="text-sm text-cyan-300">Python • Flask • Logistic Regression</p>
           <p class="mt-3 text-gray-300">85% accurate ML model for real-time heart disease risk prediction.</p>
           <div class="flex gap-4 mt-5">
-            <a href="https://github.com/MANJU-AR/Cardiac_Arrest target="_blank" class="text-sm bg-gray-700/40 px-3 py-1 rounded-full hover:bg-gray-600/50 transition"><i class="fab fa-github mr-1"></i>GitHub</a>
+            <a href="https://github.com/MANJU-AR/Cardiac_Arrest" target="_blank" class="text-sm bg-gray-700/40 px-3 py-1 rounded-full hover:bg-gray-600/50 transition"><i class="fab fa-github mr-1"></i>GitHub</a>
           </div>
         </div>
 
@@ -392,16 +388,44 @@
       skillsContainer.appendChild(div);
     });
 
-    // Photo Upload
-    const photoInput = document.getElementById('photoUpload');
-    const profilePlaceholder = document.getElementById('profilePlaceholder');
+    // Profile Picture Loading
     const profileImg = document.getElementById('profileImg');
+    const profilePlaceholder = document.getElementById('profilePlaceholder');
+    const defaultImages = ['profile.jpg', 'profile.png', 'manju.jpg', 'photo.jpg'];
 
-    if (localStorage.getItem('profilePhoto')) {
-      profileImg.src = localStorage.getItem('profilePhoto');
+    function tryLoadProfileImage() {
+      let loaded = false;
+      defaultImages.forEach(src => {
+        const img = new Image();
+        img.onload = () => {
+          if (!loaded) {
+            loaded = true;
+            profileImg.src = src;
+            profileImg.classList.remove('hidden');
+            profilePlaceholder.classList.add('hidden');
+          }
+        };
+        img.src = src;
+      });
+    }
+
+    const savedPhoto = localStorage.getItem('profilePhoto');
+    if (savedPhoto) {
+      profileImg.src = savedPhoto;
       profileImg.classList.remove('hidden');
       profilePlaceholder.classList.add('hidden');
+    } else {
+      tryLoadProfileImage();
     }
+
+    // Manual Photo Upload
+    const photoInput = document.createElement('input');
+    photoInput.type = 'file';
+    photoInput.accept = 'image/*';
+    photoInput.style.display = 'none';
+    document.body.appendChild(photoInput);
+
+    profilePlaceholder.addEventListener('click', () => photoInput.click());
 
     photoInput.addEventListener('change', e => {
       const file = e.target.files[0];
@@ -417,19 +441,19 @@
       }
     });
 
+    // Resume Download
+    document.getElementById('downloadResumeBtn').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = 'MANJU A R.pdf';
+      link.download = 'MANJU A R.pdf';
+      link.click();
+    });
+
     // Contact Form
     document.getElementById('contactForm').addEventListener('submit', e => {
       e.preventDefault();
       alert("✅ Thank you! Opening your email client...");
       e.target.reset();
-    });
-
-    // Resume Download
-    document.getElementById('downloadResumeBtn').addEventListener('click', () => {
-      const a = document.createElement('a');
-      a.href = 'MANJU A R.pdf';
-      a.download = 'MANJU A R.pdf';
-      a.click();
     });
   </script>
 </body>
